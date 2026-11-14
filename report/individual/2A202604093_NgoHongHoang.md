@@ -44,3 +44,7 @@ Metadata được đối chiếu **bằng code** với PDF/manifest: 45/45 hit t
 - Giới hạn: V1 đã được xem, test V2 nhỏ và cùng tài liệu với dev; gold dùng quote đầy đủ nên nhạy với ranh giới chunk; nhãn AI hỗ trợ cần học viên tự xác nhận; PDF trích xuất còn lỗi; thời gian chỉ đo một máy. Nếu mở rộng, tạo test độc lập theo trang/chủ đề, kiểm audit thủ công, cân nhắc OCR và đánh giá thêm các kích thước trên dev mới.
 
 Xem `starter/results/analysis.md` để biết lịch sử benchmark, tệp kết quả và lệnh tái lập.
+
+## AI và cách kiểm chứng
+
+Tôi dùng Codex (GPT-6) hỗ trợ viết pipeline, câu hỏi, phân tích trace và nhãn coherence/grounding. Các số liệu truy xuất đến từ lần chạy PostgreSQL + pgvector thực; quote và filter được chương trình đối chiếu với trang PDF bằng `validate_benchmark.py`, trace và bảng tổng hợp được kiểm tra nhất quán. Nhãn đọc bằng AI chưa được tôi xác nhận độc lập; vì vậy không trình bày chúng như kiểm tra thủ công của học viên. Tôi cần đọc lại các chunk và giải thích lựa chọn chiến lược khi bảo vệ bài.
