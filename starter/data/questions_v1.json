@@ -1,0 +1,216 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "split": "dev",
+      "type": "direct",
+      "question": "What is the maximum stay allowed by a visitor visa?",
+      "expected_answer": "Up to 180 days.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 3,
+      "evidence_quote": "Visitor visa: a short-term visa with a duration of stay of up to 180 days"
+    },
+    {
+      "id": "q02",
+      "split": "dev",
+      "type": "paraphrase",
+      "question": "How long does the high-speed rail journey from Taipei to Kaohsiung take?",
+      "expected_answer": "About 105 minutes.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 5,
+      "evidence_quote": "one-way journey between Taipei and Kaohsi- ung only within 105 minutes."
+    },
+    {
+      "id": "q03",
+      "split": "dev",
+      "type": "filter",
+      "question": "In the festivals section, which city hosted the Taiwan Lantern Festival in 2020?",
+      "expected_answer": "Taichung.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 8,
+      "evidence_quote": "Taichung will host the festival in 2020",
+      "filter": {
+        "category": "festivals"
+      }
+    },
+    {
+      "id": "q04",
+      "split": "dev",
+      "type": "direct",
+      "question": "In which month is the Neimen Songjiang Battle Array competition held?",
+      "expected_answer": "March.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 9,
+      "evidence_quote": "Songjiang Battle Array competition held in Neimen each March."
+    },
+    {
+      "id": "q05",
+      "split": "dev",
+      "type": "direct",
+      "question": "How long does the Taipei Baosheng Cultural Festival last?",
+      "expected_answer": "Two months.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 10,
+      "evidence_quote": "The festival lasts for two months"
+    },
+    {
+      "id": "q06",
+      "split": "dev",
+      "type": "paraphrase",
+      "question": "Which landscapes do Taiwan Cycling Festival routes pass through?",
+      "expected_answer": "The East Coast, East Rift Valley, Taroko Gorge, and New Central Cross-Island Highway.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 11,
+      "evidence_quote": "these routes wind along the East Coast, East Rift Valley, Taroko Gorge, and New Central Cross-Island Highway."
+    },
+    {
+      "id": "q07",
+      "split": "dev",
+      "type": "direct",
+      "question": "About how long is the Sun Moon Lake swimming course?",
+      "expected_answer": "Approximately 3,000 meters.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 12,
+      "evidence_quote": "approximately 3,000-meter course across Sun Moon Lake towards Dehua Wharf."
+    },
+    {
+      "id": "q08",
+      "split": "dev",
+      "type": "direct",
+      "question": "What certification does the Taipei International Marathon have?",
+      "expected_answer": "AIMS/IAAF certification.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 13,
+      "evidence_quote": "The Taipei International Marathon is an AIMS/IAAF-certified city road race"
+    },
+    {
+      "id": "q09",
+      "split": "dev",
+      "type": "filter",
+      "question": "In the souvenirs section, what is the filling of pineapple cake made from?",
+      "expected_answer": "Winter melon and pineapple preserves.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 15,
+      "evidence_quote": "filling made of winter melon and pineapple preserves.",
+      "filter": {
+        "category": "souvenirs"
+      }
+    },
+    {
+      "id": "q10",
+      "split": "dev",
+      "type": "direct",
+      "question": "How long is Xiluo soy sauce fermented in jugs?",
+      "expected_answer": "180 days.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 16,
+      "evidence_quote": "jug fer - mentation over a period of 180 days."
+    },
+    {
+      "id": "q11",
+      "split": "dev",
+      "type": "direct",
+      "question": "How many days does it take to hike Holy Ridge?",
+      "expected_answer": "Five to seven days.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 18,
+      "evidence_quote": "Holy Ridge takes between five to seven days to hike."
+    },
+    {
+      "id": "q12",
+      "split": "dev",
+      "type": "paraphrase",
+      "question": "Which two places were linked by the Paoma Historic Trail as the only cross-mountain route?",
+      "expected_answer": "Tamsui Subprefecture (Taipei) and Kavalan (Yilan).",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 20,
+      "evidence_quote": "only cross-mountain link between Tamsui Subprefecture (Taipei) and Kavalan (Yilan)."
+    },
+    {
+      "id": "q13",
+      "split": "dev",
+      "type": "direct",
+      "question": "How many Hehuan Mountain peaks are over 3,000 meters high?",
+      "expected_answer": "Seven.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 22,
+      "evidence_quote": "The mountain has seven peaks over 3,000 meters high."
+    },
+    {
+      "id": "q14",
+      "split": "dev",
+      "type": "direct",
+      "question": "About how high above sea level is Cingjing Farm?",
+      "expected_answer": "About 1,700 meters.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 23,
+      "evidence_quote": "Rising about 1,700 meters above sea level"
+    },
+    {
+      "id": "q15",
+      "split": "dev",
+      "type": "direct",
+      "question": "What is the total length of the Batongguan Trail?",
+      "expected_answer": "125.44 kilometers.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 24,
+      "evidence_quote": "The Batongguan Trail extends 125.44 kilometers."
+    },
+    {
+      "id": "q16",
+      "split": "test",
+      "type": "paraphrase",
+      "question": "What views do visitors seek along the Eryanping Trail?",
+      "expected_answer": "Sunset and cloud formations.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 26,
+      "evidence_quote": "enjoy the sunset and cloud formation views along the Eryanping Trail."
+    },
+    {
+      "id": "q17",
+      "split": "test",
+      "type": "filter",
+      "question": "In the mountain tourism section, what two landscapes does the Alangyi Historic Trail combine?",
+      "expected_answer": "Coastal and mountain views.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 28,
+      "evidence_quote": "both coastal and mountain views on a one-day hike.",
+      "filter": {
+        "category": "mountain_tourism"
+      }
+    },
+    {
+      "id": "q18",
+      "split": "test",
+      "type": "direct",
+      "question": "How many tunnels does the Baiyang Trail pass through?",
+      "expected_answer": "Seven tunnels.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 30,
+      "evidence_quote": "through a series of seven tunnels"
+    },
+    {
+      "id": "q19",
+      "split": "test",
+      "type": "filter",
+      "question": "In the outlying islands section, during which months do green sea turtles lay eggs on Xiaoliuqiu?",
+      "expected_answer": "May through October.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 34,
+      "evidence_quote": "Each year between May and October, the turtles lay their eggs on the beaches here",
+      "filter": {
+        "category": "outlying_islands"
+      }
+    },
+    {
+      "id": "q20",
+      "split": "test",
+      "type": "paraphrase",
+      "question": "How do the stone weirs in Penghu trap fish?",
+      "expected_answer": "They admit fish at high tide and block the exit as the water ebbs.",
+      "gold_source_id": "taiwan-tourism-guide-2020",
+      "gold_page": 36,
+      "evidence_quote": "The arc-shaped weirs catch fish by admitting them at high tide and shutting off the exit path when the waters ebb."
+    }
+  ]
+}

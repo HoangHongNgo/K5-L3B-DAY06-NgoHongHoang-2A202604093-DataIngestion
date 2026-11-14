@@ -19,5 +19,5 @@ try:
                 sys.exit('Connected, but pgvector extension is missing. See starter/README.md.')
             print(f'Database: {row[0]} | PostgreSQL: {row[1]} | pgvector: {row[2]}')
 except psycopg.Error:
-    sys.exit('Database connection failed. Check Docker, port and DATABASE_URL in starter/.env.')
-print('Setup OK. Pipeline functions still need to be implemented.')
+    sys.exit('Database connection failed. Check PostgreSQL, port and DATABASE_URL in starter/.env.')
+print('Setup OK. Add a corpus manifest and questions before running the pipeline.')

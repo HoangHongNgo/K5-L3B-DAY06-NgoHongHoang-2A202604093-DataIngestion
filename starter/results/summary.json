@@ -1,0 +1,79 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "dimensions": 384,
+  "distance": "exact cosine",
+  "content_pages": 35,
+  "ingest_seconds": 31.298,
+  "total_seconds": 36.466,
+  "texts_truncated_by_model": 0,
+  "strategies": {
+    "A": {
+      "method": "fixed",
+      "size": 450,
+      "overlap": 45,
+      "chunks": 187,
+      "characters": 78425,
+      "mean_chunk_chars": 419.4,
+      "min_chunk_chars": 93,
+      "max_chunk_chars": 450
+    },
+    "B": {
+      "method": "sentence_group",
+      "size": 650,
+      "overlap": 0,
+      "chunks": 142,
+      "characters": 71513,
+      "mean_chunk_chars": 503.6,
+      "min_chunk_chars": 105,
+      "max_chunk_chars": 647
+    },
+    "C": {
+      "method": "sentence_group",
+      "size": 650,
+      "overlap": 0,
+      "chunks": 142,
+      "characters": 71513,
+      "mean_chunk_chars": 503.6,
+      "min_chunk_chars": 105,
+      "max_chunk_chars": 647
+    }
+  },
+  "retrieval": {
+    "A": {
+      "dev": {
+        "questions": 22,
+        "hit_at_1": 19,
+        "evidence_hit_at_3": 19
+      },
+      "test": {
+        "questions": 5,
+        "hit_at_1": 3,
+        "evidence_hit_at_3": 5
+      }
+    },
+    "B": {
+      "dev": {
+        "questions": 22,
+        "hit_at_1": 19,
+        "evidence_hit_at_3": 20
+      },
+      "test": {
+        "questions": 5,
+        "hit_at_1": 4,
+        "evidence_hit_at_3": 5
+      }
+    },
+    "C": {
+      "dev": {
+        "questions": 22,
+        "hit_at_1": 19,
+        "evidence_hit_at_3": 20
+      },
+      "test": {
+        "questions": 5,
+        "hit_at_1": 4,
+        "evidence_hit_at_3": 5
+      }
+    }
+  }
+}

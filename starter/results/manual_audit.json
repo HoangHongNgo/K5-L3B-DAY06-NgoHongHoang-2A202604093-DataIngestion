@@ -1,0 +1,469 @@
+{
+  "reviewer": "AI-assisted reading of the selected retrieved chunks; not independently verified by the student.",
+  "selection": "First 10 selected content pages, midpoint character on each page; closest covering chunk per strategy.",
+  "selection_timing": "Positions were fixed in v1, before the first v2 run; subjective labels were assigned after v2 results.",
+  "coherence_scale": {
+    "0": "fragmented/unintelligible",
+    "1": "partly understandable",
+    "2": "self-contained idea"
+  },
+  "coherence": [
+    {
+      "strategy": "A",
+      "page": 2,
+      "position_char": 1290,
+      "chunk_id": "b5cd75f14c0ab4b78de6a97a2e79350bcfee651b2b3d39f5bfc77fd0d3021bfe",
+      "score": 1,
+      "reason": "Starts and ends inside phrases; main point only partly readable."
+    },
+    {
+      "strategy": "B",
+      "page": 2,
+      "position_char": 1290,
+      "chunk_id": "233dc4185381f89d009b303a28a60318a3e3192a4f5bf0cdcb69a5b0bb2aeef5",
+      "score": 2,
+      "reason": "Complete sentences explain the landscape and cultural diversity."
+    },
+    {
+      "strategy": "C",
+      "page": 2,
+      "position_char": 1290,
+      "chunk_id": "233dc4185381f89d009b303a28a60318a3e3192a4f5bf0cdcb69a5b0bb2aeef5",
+      "score": 2,
+      "reason": "Complete sentences explain the landscape and cultural diversity."
+    },
+    {
+      "strategy": "A",
+      "page": 3,
+      "position_char": 1894,
+      "chunk_id": "c662182bb52608803463bfe7db2fbdf8f2b5be5cfa7f7c2bb102430932dc7a99",
+      "score": 1,
+      "reason": "Starts inside a word and cuts the application instruction."
+    },
+    {
+      "strategy": "B",
+      "page": 3,
+      "position_char": 1894,
+      "chunk_id": "d9dbe4700440b8d809663cff6137494112d8ea129eb81060e4091abdc958ac59",
+      "score": 1,
+      "reason": "Tax-refund and internet topics are mixed in one chunk."
+    },
+    {
+      "strategy": "C",
+      "page": 3,
+      "position_char": 1894,
+      "chunk_id": "d9dbe4700440b8d809663cff6137494112d8ea129eb81060e4091abdc958ac59",
+      "score": 1,
+      "reason": "Tax-refund and internet topics are mixed in one chunk."
+    },
+    {
+      "strategy": "A",
+      "page": 4,
+      "position_char": 355,
+      "chunk_id": "76b05daeb7b9f360ae8f3bcc0509bf2ec80bcb244d525b1ac53a3673ead61339",
+      "score": 2,
+      "reason": "Transport overview is complete before map labels begin."
+    },
+    {
+      "strategy": "B",
+      "page": 4,
+      "position_char": 355,
+      "chunk_id": "d58f3d28ab4e0359fa81fe6a1a16abd2241fb377b346ae1f5671bb3531cec8d7",
+      "score": 2,
+      "reason": "Transport overview forms a complete, self-contained paragraph."
+    },
+    {
+      "strategy": "C",
+      "page": 4,
+      "position_char": 355,
+      "chunk_id": "d58f3d28ab4e0359fa81fe6a1a16abd2241fb377b346ae1f5671bb3531cec8d7",
+      "score": 2,
+      "reason": "Transport overview forms a complete, self-contained paragraph."
+    },
+    {
+      "strategy": "A",
+      "page": 5,
+      "position_char": 1805,
+      "chunk_id": "dfc52c27c5d8eb858fb380290844fd9fc04ce65e295e2253693f3628577f473c",
+      "score": 1,
+      "reason": "MRT passage starts without its subject and a new section begins at end."
+    },
+    {
+      "strategy": "B",
+      "page": 5,
+      "position_char": 1805,
+      "chunk_id": "4da40a5b4724f76d972188f63a1a9cefd339ef6ed976aa410701585b0c206924",
+      "score": 1,
+      "reason": "Two transport services are mixed; the shuttle context is partial."
+    },
+    {
+      "strategy": "C",
+      "page": 5,
+      "position_char": 1805,
+      "chunk_id": "4da40a5b4724f76d972188f63a1a9cefd339ef6ed976aa410701585b0c206924",
+      "score": 1,
+      "reason": "Two transport services are mixed; the shuttle context is partial."
+    },
+    {
+      "strategy": "A",
+      "page": 7,
+      "position_char": 557,
+      "chunk_id": "02b3a2d5ed1a2b2843ac99f7d4b776ebb94f68ac1ce2e61ad5b79d90c53967be",
+      "score": 0,
+      "reason": "Festival list is cut at both ends without explanatory context."
+    },
+    {
+      "strategy": "B",
+      "page": 7,
+      "position_char": 557,
+      "chunk_id": "49d19a49470eed3cf514ca8f7515ee39a5c8fcd9fa35c7f2a582d082052afc16",
+      "score": 1,
+      "reason": "Annual-events heading identifies a list, but the list is cut at end."
+    },
+    {
+      "strategy": "C",
+      "page": 7,
+      "position_char": 557,
+      "chunk_id": "49d19a49470eed3cf514ca8f7515ee39a5c8fcd9fa35c7f2a582d082052afc16",
+      "score": 1,
+      "reason": "Annual-events heading identifies a list, but the list is cut at end."
+    },
+    {
+      "strategy": "A",
+      "page": 8,
+      "position_char": 776,
+      "chunk_id": "562bcb80619497ff9367a87ad4a930402702dbc04605a8ad24c761fe59bb2b51",
+      "score": 1,
+      "reason": "Starts without subject and mixes two festivals."
+    },
+    {
+      "strategy": "B",
+      "page": 8,
+      "position_char": 776,
+      "chunk_id": "83bcfa9e83cbeb3268113e2ee164423c0a3e0ed8377b626a78a2ead4e1e16dda",
+      "score": 1,
+      "reason": "Lantern date is readable, but two festivals are mixed."
+    },
+    {
+      "strategy": "C",
+      "page": 8,
+      "position_char": 776,
+      "chunk_id": "83bcfa9e83cbeb3268113e2ee164423c0a3e0ed8377b626a78a2ead4e1e16dda",
+      "score": 1,
+      "reason": "Lantern date is readable, but two festivals are mixed."
+    },
+    {
+      "strategy": "A",
+      "page": 9,
+      "position_char": 983,
+      "chunk_id": "96b7cd33b1ab01d6c4efff79fb25350b8e2557fe0152eae576a30ab780375f04",
+      "score": 1,
+      "reason": "Pilgrimage starts mid-word and the route list is cut."
+    },
+    {
+      "strategy": "B",
+      "page": 9,
+      "position_char": 983,
+      "chunk_id": "6f27d5d85182bf87632d3bccdfe9ca800c7f00d2793aeb45b92b9351851bfcbf",
+      "score": 2,
+      "reason": "Mazu pilgrimage is identifiable with a complete explanation."
+    },
+    {
+      "strategy": "C",
+      "page": 9,
+      "position_char": 983,
+      "chunk_id": "6f27d5d85182bf87632d3bccdfe9ca800c7f00d2793aeb45b92b9351851bfcbf",
+      "score": 2,
+      "reason": "Mazu pilgrimage is identifiable with a complete explanation."
+    },
+    {
+      "strategy": "A",
+      "page": 10,
+      "position_char": 1221,
+      "chunk_id": "1e33af28bbbc680382c3dd109dbf1d5c7500807b8dbfd080e4c5cef158036e9d",
+      "score": 1,
+      "reason": "Fireworks description starts mid-sentence and next festival begins."
+    },
+    {
+      "strategy": "B",
+      "page": 10,
+      "position_char": 1221,
+      "chunk_id": "6473945016ebd02a763a15a8876ab22e0ae3e0147be35507268e375a31b73acb",
+      "score": 2,
+      "reason": "Hot-air-balloon festival description is complete and clear."
+    },
+    {
+      "strategy": "C",
+      "page": 10,
+      "position_char": 1221,
+      "chunk_id": "6473945016ebd02a763a15a8876ab22e0ae3e0147be35507268e375a31b73acb",
+      "score": 2,
+      "reason": "Hot-air-balloon festival description is complete and clear."
+    },
+    {
+      "strategy": "A",
+      "page": 11,
+      "position_char": 1147,
+      "chunk_id": "70aa16d070438e587c75a9ea6431edd55d559001654103fc6b484c1fd9aa7cc8",
+      "score": 1,
+      "reason": "Summer festival starts mid-sentence and ends in a new event."
+    },
+    {
+      "strategy": "B",
+      "page": 11,
+      "position_char": 1147,
+      "chunk_id": "ea15a3fb2b03355e9fcd1766795b102e0450a5c439972b9c6ae012de40917f1d",
+      "score": 1,
+      "reason": "Summer event is understandable but adjacent event is mixed in."
+    },
+    {
+      "strategy": "C",
+      "page": 11,
+      "position_char": 1147,
+      "chunk_id": "ea15a3fb2b03355e9fcd1766795b102e0450a5c439972b9c6ae012de40917f1d",
+      "score": 1,
+      "reason": "Summer event is understandable but adjacent event is mixed in."
+    },
+    {
+      "strategy": "A",
+      "page": 12,
+      "position_char": 948,
+      "chunk_id": "d4531ff480f810f6a0aa658619c22a8d7c4d7c0157a62084ce08a84013fb097f",
+      "score": 1,
+      "reason": "Hot-spring passage starts mid-word and ends in a new event."
+    },
+    {
+      "strategy": "B",
+      "page": 12,
+      "position_char": 948,
+      "chunk_id": "101fefbf855c20347c1213a9c9118f4cf74a0723ef6366db1df043cf884cee59",
+      "score": 2,
+      "reason": "Hot-spring event description and timing are understandable."
+    },
+    {
+      "strategy": "C",
+      "page": 12,
+      "position_char": 948,
+      "chunk_id": "101fefbf855c20347c1213a9c9118f4cf74a0723ef6366db1df043cf884cee59",
+      "score": 2,
+      "reason": "Hot-spring event description and timing are understandable."
+    }
+  ],
+  "grounding_scale": {
+    "0": "no answer evidence",
+    "1": "partial evidence",
+    "2": "enough evidence and source"
+  },
+  "grounding": [
+    {
+      "strategy": "A",
+      "question_id": "q21",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 3 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        3
+      ],
+      "top_pages": [
+        2,
+        30,
+        2
+      ]
+    },
+    {
+      "strategy": "A",
+      "question_id": "q22",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        4,
+        27,
+        3
+      ]
+    },
+    {
+      "strategy": "A",
+      "question_id": "q23",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        10,
+        7,
+        7
+      ]
+    },
+    {
+      "strategy": "A",
+      "question_id": "q24",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 2 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        2
+      ],
+      "top_pages": [
+        14,
+        14,
+        14
+      ]
+    },
+    {
+      "strategy": "A",
+      "question_id": "q25",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        35,
+        35,
+        3
+      ]
+    },
+    {
+      "strategy": "B",
+      "question_id": "q21",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        2,
+        2,
+        17
+      ]
+    },
+    {
+      "strategy": "B",
+      "question_id": "q22",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        4,
+        5,
+        29
+      ]
+    },
+    {
+      "strategy": "B",
+      "question_id": "q23",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        10,
+        7,
+        11
+      ]
+    },
+    {
+      "strategy": "B",
+      "question_id": "q24",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 3 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        3
+      ],
+      "top_pages": [
+        14,
+        2,
+        14
+      ]
+    },
+    {
+      "strategy": "B",
+      "question_id": "q25",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        35,
+        35,
+        21
+      ]
+    },
+    {
+      "strategy": "C",
+      "question_id": "q21",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        2,
+        2,
+        17
+      ]
+    },
+    {
+      "strategy": "C",
+      "question_id": "q22",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        4,
+        5,
+        5
+      ]
+    },
+    {
+      "strategy": "C",
+      "question_id": "q23",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        10,
+        7,
+        11
+      ]
+    },
+    {
+      "strategy": "C",
+      "question_id": "q24",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 2 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        2
+      ],
+      "top_pages": [
+        14,
+        14,
+        15
+      ]
+    },
+    {
+      "strategy": "C",
+      "question_id": "q25",
+      "score": 2,
+      "reason": "A retrieved chunk at rank 1 contains the answer evidence and a traceable physical PDF page.",
+      "supporting_ranks": [
+        1
+      ],
+      "top_pages": [
+        35,
+        35,
+        37
+      ]
+    }
+  ]
+}

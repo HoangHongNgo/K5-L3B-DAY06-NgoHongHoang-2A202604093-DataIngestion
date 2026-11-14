@@ -1,6 +1,8 @@
 # Starter · PostgreSQL + pgvector
 
-Bộ khởi động **tùy chọn** cho lab cá nhân. Docker Compose tạo PostgreSQL + pgvector local; các file trong `src/` là **khung pseudocode có TODO**, chưa đọc tài liệu, tạo embedding, lưu vector hay chạy benchmark. Bạn cần tự hiện thực. Vẫn có thể chọn Qdrant, Chroma hoặc vector store tương đương theo [GUIDE.md](../GUIDE.md).
+Bộ khởi động dùng PostgreSQL + pgvector, embedding local `sentence-transformers/all-MiniLM-L6-v2` (384 chiều), fixed chunking và gom câu. Docker Compose là một cách dựng database; có thể dùng PostgreSQL + pgvector cài sẵn và chỉnh `DATABASE_URL`.
+
+Workspace này có [manifest](data/manifest.json) cho *2020 Taiwan Tourism Guide Book* (35 trang nội dung) và [27 câu hỏi đã gắn evidence](data/questions.json). PDF được cung cấp để xử lý cục bộ; quyền tái phân phối chưa xác minh nên PDF và trace chứa đoạn văn được loại khỏi Git. Tải bản PDF từ [trang nguồn](https://taiwan.net.vn/download) và đặt tại `starter/data/2020_Taiwan_Tourism_Guide_Book_(E).pdf`; kiểm SHA-256 theo manifest. [Kết quả V2](results/analysis.md) ghi điểm số, lỗi và giới hạn; [lịch sử benchmark](data/benchmark_protocol.md) ghi rõ V1 đã được xem và bộ test V2 mới.
 
 ## Cấu trúc
 
@@ -13,19 +15,19 @@ starter/
 ├── scripts/check_setup.py # kiểm tra kết nối và extension (đã chạy được)
 ├── src/
 │   ├── models.py          # cấu trúc dữ liệu mẫu
-│   ├── ingestion.py       # TODO: đọc / chuẩn hóa tài liệu
-│   ├── chunking.py        # TODO: chia chunk
-│   ├── embeddings.py      # TODO: chọn model API hoặc local
-│   ├── store.py           # TODO: lưu vector, metadata và filter
-│   ├── evaluation.py      # TODO: chấm truy xuất, lưu trace
-│   └── run.py             # TODO: kết nối các bước thành pipeline
-├── data/                  # bạn tự chuẩn bị corpus được phép sử dụng
-└── results/               # lưu kết quả của bạn
+│   ├── ingestion.py       # đọc PDF / chuẩn hóa văn bản
+│   ├── chunking.py        # fixed-size và gom câu, giữ số trang
+│   ├── embeddings.py      # sentence-transformers local
+│   ├── store.py           # pgvector, cosine, metadata filter
+│   ├── evaluation.py      # Hit@1, Evidence Hit@3, metadata audit
+│   └── run.py             # điều phối pipeline A/B/C
+├── data/                  # manifest, PDF và questions.json của bạn
+└── results/               # trace và thống kê sinh khi chạy
 ```
 
 ## 1. Cài và kiểm tra database
 
-Cần Docker Desktop hoặc Docker Engine + Compose, Python **3.11–3.14**, và mạng để tải image/dependencies lần đầu. Các lệnh sau chạy từ thư mục `starter/`:
+Cần PostgreSQL có pgvector, Python **3.11–3.14**, và mạng để tải model/dependencies lần đầu. Nếu dùng Docker Compose, cần Docker Desktop hoặc Docker Engine + Compose. Các lệnh sau chạy từ thư mục `starter/`:
 
 ```bash
 cd starter
@@ -38,11 +40,21 @@ Kích hoạt `.venv`: macOS/Linux dùng `source .venv/bin/activate`; Windows Pow
 python -m pip install -r requirements.txt
 # macOS/Linux: cp .env.example .env
 # Windows PowerShell: Copy-Item .env.example .env
+# Chỉ khi dùng Docker:
 docker compose -p day6_student_starter up -d --wait
 python scripts/check_setup.py
 ```
 
-Kỳ vọng: hiện tên database, phiên bản PostgreSQL và pgvector, sau đó `Setup OK`. Đây **chỉ là kiểm tra hạ tầng**, không phải kết quả benchmark. Docker dùng cổng `127.0.0.1:55433` và mật khẩu cố định **chỉ dùng local cho lab**; nếu cổng bận, sửa đồng thời port trong `docker-compose.yml` và `DATABASE_URL` trong `.env`. `init.sql` chỉ chạy khi volume mới được tạo; nếu database sẵn có chưa bật extension, xem log Docker và kiểm tra cấu hình thay vì xóa volume chứa dữ liệu.
+Kỳ vọng: hiện tên database, phiên bản PostgreSQL và pgvector, sau đó `Setup OK`. Đây **chỉ là kiểm tra hạ tầng**, không phải kết quả benchmark. Nếu dùng PostgreSQL cài trực tiếp, tạo database, bật `CREATE EXTENSION vector`, rồi đặt URL kết nối đúng trong `.env`. Docker dùng cổng `127.0.0.1:55433` và mật khẩu cố định **chỉ dùng local cho lab**; nếu cổng bận, sửa đồng thời port trong `docker-compose.yml` và `DATABASE_URL` trong `.env`.
+
+Trên máy Windows có sẵn `.local/postgres` (như workspace này), có thể bỏ qua Docker và chạy từ project root:
+
+```powershell
+.\starter\scripts\local_db.ps1
+.\.venv\Scripts\python.exe starter\scripts\check_setup.py
+```
+
+Script tạo `starter/.env` với mật khẩu ngẫu nhiên, khởi tạo database rỗng và bật pgvector. Chạy lại để khởi động database; dừng bằng `.\starter\scripts\local_db.ps1 -Stop`. Không commit `.env`.
 
 Dừng container nhưng giữ dữ liệu:
 
@@ -50,16 +62,16 @@ Dừng container nhưng giữ dữ liệu:
 docker compose -p day6_student_starter stop
 ```
 
-## 2. Chọn embedding model
+## 2. Embedding model
 
-Điền key tương ứng trong `.env` nếu dùng OpenRouter, OpenAI hoặc Gemini; **không commit `.env`**. Model local không cần API key. `requirements.txt` chỉ có dependencies cơ bản: tự cài SDK hoặc thư viện local phù hợp với model bạn chọn và ghi lại version/lệnh cài trong báo cáo. Ghi tên model và số chiều; dùng cùng model cho toàn bộ chiến lược và vector query tương thích vector document.
+Mặc định dùng `sentence-transformers/all-MiniLM-L6-v2`, 384 chiều, chạy local và không cần API key. Model được tải lần đầu vào `.local/models/huggingface` tại project root. Cùng model và cách chuẩn hóa vector được dùng cho document và query. Ghi version model/thư viện trong báo cáo. Model này được huấn luyện chủ yếu cho tiếng Anh; nếu corpus tiếng Việt, cần đánh giá chất lượng truy xuất thực tế.
 
 ## 3. Hoàn thiện pipeline
 
-1. Đặt corpus vào `data/` hoặc cung cấp manifest/hướng dẫn truy cập. Đọc [GUIDE.md](../GUIDE.md) về **30 trang nội dung**, quyền dữ liệu và metadata.
-2. Hoàn thiện từng hàm TODO trong `src/`. Lưu ID tài liệu, nguồn, trang/vị trí và ít nhất một trường filter có ích.
-3. Xây ít nhất ba cấu hình; ví dụ A fixed-size, B theo đoạn, C như B nhưng có filter. Cần cùng corpus, model và benchmark; nạp lại không nhân đôi và xử lý chunk cũ khi dữ liệu đổi.
-4. Tự viết ít nhất 20 câu hỏi kèm evidence, tách dev/test trước khi thử theo [BENCHMARK.md](../BENCHMARK.md). Lưu trace top-3 và báo cáo đủ năm tiêu chí.
-5. Sau khi hoàn thiện, chạy `python -m src.run` từ thư mục `starter/`. Trước khi làm TODO, lệnh này **chủ động báo `NotImplementedError`**.
+1. Đặt PDF đúng tên vào `starter/data/`; manifest và benchmark đã nằm ở đó. Xem [mẫu định dạng](data/README.md) khi đổi corpus. Chạy `python scripts/validate_benchmark.py` để kiểm 35 trang và 27 câu (22 dev / 5 test).
+2. Chạy `python -m src.run` từ thư mục `starter/`. Có thể dùng `python -m src.run --ingest-only` khi chưa có bộ câu hỏi.
+3. A: fixed 450 ký tự, overlap 45. B: gom câu tối đa 650 ký tự, không overlap. C: cùng chunk/vector như B, thêm filter `category` khi câu hỏi cung cấp. Cả ba dùng cùng corpus, model và exact cosine search.
+4. Xem `results/traces.json` và `results/summary.json`. Trace đầy đủ chỉ ở máy cục bộ. `traces_public.json` bỏ nguyên văn chunk nhưng giữ ID, score, metadata và hash để kiểm chứng; chạy lại để tái tạo trace đầy đủ. Lệnh chạy lại đồng bộ dữ liệu, không nhân đôi chunk và xóa chunk cũ khi tài liệu hoặc manifest thay đổi.
+5. Xem [phân tích](results/analysis.md) và `manual_audit.json`. Nhãn coherence/grounding do AI hỗ trợ đọc, cần học viên xác nhận độc lập nếu muốn gọi là audit thủ công. `metadata_audit.json` là đối chiếu bằng chương trình, không thay thế kiểm nguồn thủ công.
 
 Lưu code, cấu hình, kết quả và lệnh chạy để người chấm tái lập; không commit key, dữ liệu mật hoặc dữ liệu không có quyền chia sẻ.

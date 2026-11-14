@@ -1,0 +1,52 @@
+{
+  "method": "Programmatic comparison of retrieved hits with extracted PDF pages and manifest metadata; not a human audit.",
+  "test_top3_correct": 45,
+  "test_top3_total": 45,
+  "all_top3_correct": 243,
+  "all_top3_total": 243,
+  "filter_compliant_questions": 8,
+  "filter_questions": 8,
+  "filter_details": [
+    {
+      "question_id": "q03",
+      "split": "dev",
+      "compliant": true
+    },
+    {
+      "question_id": "q09",
+      "split": "dev",
+      "compliant": true
+    },
+    {
+      "question_id": "q17",
+      "split": "dev",
+      "compliant": true
+    },
+    {
+      "question_id": "q19",
+      "split": "dev",
+      "compliant": true
+    },
+    {
+      "question_id": "q22",
+      "split": "test",
+      "compliant": true
+    },
+    {
+      "question_id": "q23",
+      "split": "test",
+      "compliant": true
+    },
+    {
+      "question_id": "q24",
+      "split": "test",
+      "compliant": true
+    },
+    {
+      "question_id": "q25",
+      "split": "test",
+      "compliant": true
+    }
+  ],
+  "failures": []
+}
