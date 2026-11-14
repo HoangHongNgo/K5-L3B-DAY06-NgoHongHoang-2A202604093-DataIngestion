@@ -12,3 +12,4 @@ __pycache__/
 # User-provided source and derived excerpts: redistribution rights unverified.
 starter/data/2020_Taiwan_Tourism_Guide_Book_(E).pdf
 starter/results/traces.json
+starter/results/2020_Taiwan_Tourism_Guide_Book_(E)_extracted.txt
