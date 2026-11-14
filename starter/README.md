@@ -74,4 +74,21 @@ Mặc định dùng `sentence-transformers/all-MiniLM-L6-v2`, 384 chiều, chạ
 4. Xem `results/traces.json` và `results/summary.json`. Trace đầy đủ chỉ ở máy cục bộ. `traces_public.json` bỏ nguyên văn chunk nhưng giữ ID, score, metadata và hash để kiểm chứng; chạy lại để tái tạo trace đầy đủ. Lệnh chạy lại đồng bộ dữ liệu, không nhân đôi chunk và xóa chunk cũ khi tài liệu hoặc manifest thay đổi.
 5. Xem [phân tích](results/analysis.md) và `manual_audit.json`. Nhãn coherence/grounding do AI hỗ trợ đọc, cần học viên xác nhận độc lập nếu muốn gọi là audit thủ công. `metadata_audit.json` là đối chiếu bằng chương trình, không thay thế kiểm nguồn thủ công.
 
+## 4. Tìm thử trong dữ liệu đã nạp
+
+Từ thư mục project root trên Windows PowerShell, khởi động database rồi tìm bằng một câu hỏi:
+
+```powershell
+.\starter\scripts\local_db.ps1
+.\.venv\Scripts\python.exe starter\scripts\search.py --strategy C --category festivals "Which city hosted the Taiwan Lantern Festival in 2020?"
+```
+
+Bỏ `--category festivals` để tìm toàn bộ sách; đổi `--strategy A` hoặc `B` để so sánh. Chạy không có câu hỏi để vào chế độ nhập nhiều câu liên tiếp:
+
+```powershell
+.\.venv\Scripts\python.exe starter\scripts\search.py --strategy C
+```
+
+Lệnh in top-3 chunk, score cosine, trang, category và nguyên văn trích xuất. Đây là tìm kiếm bằng chứng, chưa sinh câu trả lời. Nếu database trống, chạy pipeline ở mục 3 trước.
+
 Lưu code, cấu hình, kết quả và lệnh chạy để người chấm tái lập; không commit key, dữ liệu mật hoặc dữ liệu không có quyền chia sẻ.
